@@ -14,11 +14,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       <h4>{{ user.name }}</h4>
       <h5>{{ user.age }} years old</h5>
       {{ user.location }} <br />
-      {{ user.email }}
-      {{state}}
-      
+      {{ user.email }} <br />
+      state: {{state}}
+      <input type="text" />
       <button (click)="update()">Internal update</button>
-      <p>* should not update</p>
+      <p>should update because trigger dom event click</p>
     </div>
   `
 })
@@ -26,10 +26,10 @@ export class UserOneComponent {
   @Input()
   user;
 
-  state:number=0;
-  
+  state: number = 0;
+
   update() {
     ++this.state;
-   // this.user.name = 'Lebron James';
+    // this.user.name = 'user-one update name';
   }
 }

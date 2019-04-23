@@ -6,6 +6,7 @@ import { NgrxComponent } from './ngrx/ngrx.component';
 import { AppComponent } from './app.component';
 import { HelloParentComponent } from './hello/helloparent.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
+import { FormvalidateComponent } from './formvalidate/formvalidate.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'ngrx', component: NgrxComponent },
   { path: 'hello', component: HelloParentComponent },
   { path: 'sharereplay', component: SharereplaytestComponent },
-  
+  { path: 'formvalidate', component: FormvalidateComponent },
+
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
   //   path: 'heroes',
@@ -25,7 +27,7 @@ const routes: Routes = [
   //   redirectTo: '/heroes',
   //   pathMatch: 'full'
   // },
-  { path: '**', component: AppComponent }
+  // { path: '**', component: AppComponent }
 ];
 
 

@@ -13,6 +13,8 @@ import { BrowserModule } from '@angular/platform-browser'
       <button (click)="changeName()">Change name property</button>
       <button (click)="changeUser()">Change user object</button>
       <hr>
+      
+      <p>两个组件引用同样的@Input</p>
       <div>
         <user-one [user]="user"></user-one>
         <hr>
@@ -23,11 +25,13 @@ import { BrowserModule } from '@angular/platform-browser'
 })
 export class ChangedetectionComponent {
   user: any = {
-    name: 'Jeremy Lin',
+    name: 'origin parent name',
     age: 31,
     location: 'New York'
   };
-
+  ngDoCheck() {
+    console.log(' ngDoCheck!!!!');
+  }
   addProp() {
     this.user.email = 'griffin@blink-182.net';
   }
@@ -44,10 +48,3 @@ export class ChangedetectionComponent {
     };
   }
 }
-
-// @NgModule({
-//   imports: [ BrowserModule ],
-//   declarations: [ App, UserOneComponent, UserTwoComponent ],
-//   bootstrap: [ App ]
-// })
-// export class changeDetectionComponent {}

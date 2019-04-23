@@ -16,6 +16,7 @@ import { counterReducer } from './reducers/counter.reducer';
 import { HelloParentComponent } from './hello/helloparent.component';
 import { HelloComponent } from './hello/hello.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
+import { FormvalidateComponent } from './formvalidate/formvalidate.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.comp
     OnChangeComponent,
     HelloParentComponent,
     HelloComponent,
-    SharereplaytestComponent
+    SharereplaytestComponent,
+    FormvalidateComponent
   ],
   imports: [
     BrowserModule,

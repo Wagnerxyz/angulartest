@@ -11,22 +11,23 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   `],
   template: `
     <div>ChangeDetectionStrategy.Default
-      <h4>{{ user.name }}</h4>
-      <h5>{{ user.age }} years old</h5>
-      {{ user.location }} <br />
-      {{ user.email }}
-      {{state}}
+    <h4>{{ user.name }}</h4>
+    <h5>{{ user.age }} years old</h5>
+    {{ user.location }} <br />
+    {{ user.email }} <br />
+    state: {{state}}
+    
       <button (click)="update()">Internal update</button>
-      <p>* should update</p>
+      <p>should update because trigger dom event click</p>
     </div>
   `
 })
 export class UserTwoComponent {
   @Input()
   user;
-  state:number=0;
+  state: number = 0;
   update() {
     ++this.state;
-   // this.user.name = 'Kevin Durant';
+     this.user.name = 'user-two update name';
   }
 }
