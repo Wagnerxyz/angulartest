@@ -1,37 +1,47 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, NgZone, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'hello',
   template: `
-    <h1>Hello {{config.position}}!</h1>
-    <p>Config1 {{config1.position}}!</p>
-    stat:{{state}}
+    <h1>child value Config: {{config.position}}!</h1>
+    <p>child value Config1 : {{config1.position}}!</p>
+    state value:{{state}}
+    <br>
     {{runChangeDetection}}
-    <button (click)="onClick()">Trigger change detection child</button>
+    <button (click)="onClick()">Empty ClickTrigger child change detection </button>
   `
-  // , changeDetection: ChangeDetectionStrategy.OnPush
+  , changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelloComponent {
   @Input()
   config;
 
+  @Input()
   state: number = 0;
   config1 = {
     position: 'top'
   };
-
+  constructor(private zone: NgZone) { }
   ngOnInit() {
-    setTimeout(() => {
-       this.config.position = 'left';
-       this.config1.position = 'left';
-      ++this.state;
-      // this.config = { position: 'wwww' }
-      // this.config1 = { position: 'wwww' }
-      console.log('done');
+    // setInterval(() => {
+    //   //still not work onpush
+    //   this.config = { position: 'changeModelInZone' }
 
-    }, 3000);
-    console.log('ok');
+    //   //  this.config.position = 'left';
+    //   //  this.config1.position = 'left';
+    //   ++this.state;
+    //   console.log('settimeout change value done');
+    // }, 2000);
+    console.log('child ngOnInit');
+  }
 
+  public changeModelInZone() {
+    this.zone.run(() =>
+      setTimeout(() => {
+        console.log('changeModelInZone');
+        this.config = { position: 'changeModelInZone' }
+      }, 1000)
+    )
   }
 
   get runChangeDetection() {

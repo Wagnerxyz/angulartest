@@ -17,6 +17,7 @@ import { HelloParentComponent } from './hello/helloparent.component';
 import { HelloComponent } from './hello/hello.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { FormvalidateComponent } from './formvalidate/formvalidate.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ count: counterReducer })
+    // CanvaspdfModule,
+    StoreModule.forRoot({ count: counterReducer }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

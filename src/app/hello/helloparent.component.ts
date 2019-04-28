@@ -2,28 +2,38 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <hello [config]="config"></hello>
-    <button (click)="onClick()">Trigger change detection</button>
+    <p>parent:{{config.position}}</p>
+ 
+    <button (click)="onClick()">Parent trigger change detection</button>
+    <button (click)="change()">change value</button>
+    
+    <hello [config]="config" [state]="state"></hello>
   `
 })
 export class HelloParentComponent {
   config = {
     position: 'top'
   };
-  // ngOnInit() {
-  //   setTimeout(() => {
-  //    // this.config.position = 'left';
-  //    this.config = {
-  //     position: 'bottom'
-  //   }
-  //     console.log('done');
-      
-  //   },3000);
-  //   console.log('ok');
+  state=6;
+  ngOnInit() {
+    setInterval(() => {
+      //感觉onpush只对自组件@Input有效。父组件变更引用才行。子组件内部新对象赋值也不行
+   // angular绑定机制毕竟死盯着Input啊，等他变了才刷新
+      this.config.position = Date.now().toString();
+      // ++this.state;
+    //  this.config = {
+    //   position: Date.now().toString()
+    // }
+    console.log('parent setinterval run');
+    
+    },1500);
+  }
 
-  // }
-
+  change() {
+    this.config = { position: 'changeModelInZone' }
+    // this.config.position = 'bottom';
+  }
   onClick() {
-    this.config.position = 'bottom';
+
   }
 }

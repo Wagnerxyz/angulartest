@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HelloParentComponent } from './hello/helloparent.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
+import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,11 @@ const routes: Routes = [
   { path: 'hello', component: HelloParentComponent },
   { path: 'sharereplay', component: SharereplaytestComponent },
   { path: 'formvalidate', component: FormvalidateComponent },
+  {
+    path: 'pdf',
+    loadChildren: './canvaspdf/canvaspdf.module#CanvaspdfModule'
+  },
+
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
