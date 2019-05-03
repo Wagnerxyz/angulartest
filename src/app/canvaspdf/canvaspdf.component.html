@@ -1,4 +1,4 @@
-<div id="content" #content>
+<div>
   <mat-card>
     <div class="alert alert-info">
       <strong>Html To PDF Conversion - Angular 6</strong>
@@ -9,68 +9,38 @@
   </mat-card>
 </div>
 <div>
-  <mat-card>
-    <!-- <table id="contentToConvert">
-      <tr>
-        <th>Column1</th>
-        <th>Column2</th>
-        <th>Column3</th>
-      </tr>
-      <tr>
-        <td>Row 1</td>
-        <td>Row 1</td>
-        <td>Row 1</td>
-      </tr>
-      <tr>
-        <td>Row 2</td>
-        <td>Row 2</td>
-        <td>Row 2</td>
-      </tr>
-      <tr>
-        <td>Row 3</td>
-        <td>Row 3</td>
-        <td>Row 3</td>
-      </tr>
-      <tr>
-        <td>Row 4</td>
-        <td>Row 4</td>
-        <td>Row 4</td>
-      </tr>
-      <tr>
-        <td>Row 5</td>
-        <td>Row 5</td>
-        <td>Row 5</td>
-      </tr>
-      <tr>
-        <td>Row 6</td>
-        <td>Row 6</td>
-        <td>Row 6</td>
-      </tr>
-    </table> -->
-  </mat-card>
-  <div id="container">
+  <div id="gridcontainer">
     <div id="header">
-      <img src="../../assets/SchlumbergerLogoH.png" style="float:right">
-      <h1>D&I Initializations</h1>
-      <p style="float:right">{{now}}</p>
+      <img src="../../assets/SchlumbergerLogoH.png" id="slbimg">
+      <div id="headerrowtwo">
+        <h1>D&I Initializations</h1>
+        <p style="text-align: end;">{{now}}</p>
+      </div>
     </div>
     <div id="client">
-      <p>Client:</p>
-      <p>Job ID:</p>
-      <p>Field:</p>
-      <p>Well:</p>
+      <p>Client:    qweqeqeqeqwe</p>
+      <p>Job ID:  19OKC0898</p>
+      <p>Field: asdasdadasda</p>
+      <p>Well: zeus aaa</p>
     </div>
     <div id="bitrunangle">
-      <div>Bit Run</div>
-      <div>Toolface Offset Angle</div>
+      <div>Bit Run:  6</div>
+      <div>Toolface Offset Angle: 30deg</div>
     </div>
-
+    <div id="geomagmodel">
+      Geomag Model Used: AWQEDAS
+    </div>
     <div id="GeomagDate">
       <p>Geomag Date:</p>
+      <p>2019123123123</p>
       <p>LMF Elev above MSL:</p>
+      <p>asdasdadasdasd</p>
       <p>DF Elev above Permanent Datum:</p>
+      <p>sadfsdfsdfsfsdf</p>
       <p>Latitude:</p>
+      <p>12313131</p>
       <p>Longitude:</p>
+      <p>12313131</p>
     </div>
     <div id="northref">
       <p>North Reference:</p>
@@ -81,20 +51,42 @@
     <div id="arrow">
       <img src="../../assets/angle.PNG" alt="">
     </div>
-    <div id="geomagmodel">
-      Geomag Model Used:
-    </div>
+
     <div id="location">
       <div>need inner table</div>
     </div>
-    <div id="drillstring">
-      Estimated Drillstring Intereence:
-    </div>
-    <div id="azimuth">
-      Estimated Azimuth Error(AE):
-    </div>
     <div id="tip">
-      <div>inner grid</div>
+      <!-- <span id="tipspan">TIP</span> -->
+      <table id="tipgrid">
+        <tr>
+          <th rowspan="2">TIP</th>
+          <th>MD(ft)</th>
+          <th>INCL(deg)</th>
+          <th>AZIM(deg)</th>
+          <th>TVD(ft)</th>
+          <th>N/-S(ft)</th>
+          <th>E/-W(ft)</th>
+          <th>VSAZI(deg)</th>
+        </tr>
+        <tr>
+          <td>1111</td>
+          <td>1111</td>
+          <td>1111</td>
+          <td>1111</td>
+          <td>1111</td>
+          <td>1111</td>
+          <td>1111</td>
+        </tr>
+
+        <!-- <p>MD(ft)</p>
+        <p>INCL(deg)</p>
+        <p>AZIM(deg)</p>
+        <p>TVD(ft)</p>
+        <p>N/-S(ft)</p>
+        <p>E/-W(ft)</p>
+        <p>VSAZI(deg)</p> -->
+
+      </table>
     </div>
     <div id="customerrep">
       inner grid

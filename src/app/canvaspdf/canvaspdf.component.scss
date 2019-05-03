@@ -1,0 +1,133 @@
+$Nopadding: 0px !important;
+
+#gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(9, [col-start] max-content [col-end]);
+    // gap: 5px;
+    /* width: 200px;
+    height: 300px; */
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    grid-template-areas:
+        "header header "
+        "client client"
+        "bitrunangle bitrunangle "
+        "geomagmodel geomagmodel"
+        "GeomagDate arrow"
+        "northref arrow"
+        "location location"
+        "tip tip"
+        "customerrep customerrep";
+}
+
+#gridcontainer>div {
+    /* padding: 15px; */
+    /* text-align: center; */
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#gridcontainer>* {
+    padding: 10px;
+}
+
+#header {
+    grid-area: header;
+
+}
+
+#headerrowtwo {
+    margin-top: 15px;
+    display: flex;
+    align-items: baseline;
+
+    >* {
+        flex: 1 1 50%;
+    }
+}
+
+#slbimg {
+    float: right;
+ 
+}
+
+#client {
+    grid-area: client;
+}
+
+#bitrunangle {
+    padding: $Nopadding;
+    grid-area: bitrunangle;
+    display: flex;
+
+    >* {
+        &:first-child {
+            border-right: 1px solid black;
+        }
+
+        flex: 1 1 50%;
+    }
+}
+
+// #bitrunangle>* {
+
+// }
+
+#GeomagDate {
+    grid-area: GeomagDate;
+    display: grid;
+    grid: repeat(5, 1fr)/repeat(2, max-content);
+    justify-content: space-between;
+}
+
+#northref {
+    grid-area: northref;
+}
+
+#arrow {
+    grid-area: arrow;
+}
+
+#geomagmodel {
+    grid-area: geomagmodel;
+}
+
+#location {
+    grid-area: location;
+}
+
+#tip {
+    grid-area: tip;
+    padding: $Nopadding;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th:first-child {
+    width: 8%;
+}
+
+#customerrep {
+    grid-area: customerrep;
+}
+
+
+#tipspan {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+/* p{
+
+} */
