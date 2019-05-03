@@ -1,0 +1,78 @@
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, [col-start] max-content [col-end]);
+    gap: 5px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    grid-template-areas:
+        "header header "
+        "client client"
+        "bitrunangle bitrunangle "
+        "geomagmodel geomagmodel"
+        "GeomagDate arrow"
+        "northref arrow"
+        "location location"
+        "drillstring azimuth"
+        "tip tip"
+        "customerrep customerrep";
+}
+
+#container>div {
+    /* padding: 15px; */
+    /* text-align: center; */
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#header {
+    grid-area: header;
+}
+
+#client {
+    grid-area: client;
+}
+
+#bitrunangle {
+    grid-area: bitrunangle;
+}
+
+#GeomagDate {
+    grid-area: GeomagDate;
+}
+
+#northref {
+    grid-area: northref;
+}
+
+#arrow {
+    grid-area: arrow;
+}
+
+#geomagmodel {
+    grid-area: geomagmodel;
+}
+
+#location {
+    grid-area: location;
+}
+
+#drillstring {
+    grid-area: drillstring;
+}
+
+#azimuth {
+    grid-area: azimuth;
+}
+
+#tip {
+    grid-area: tip;
+}
+
+#customerrep {
+    grid-area: customerrep;
+}
+
+/* p{
+
+} */
