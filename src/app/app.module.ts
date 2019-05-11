@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,8 @@ import { HelloParentComponent } from './hello/helloparent.component';
 import { HelloComponent } from './hello/hello.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgdocheckComponent } from './ngdocheck/ngdocheck.component';
+import { AComponent } from './ngdocheck/ngdocheck.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HelloParentComponent,
     HelloComponent,
     SharereplaytestComponent,
-    FormvalidateComponent
+    FormvalidateComponent,
+    NgdocheckComponent,
+    AComponent
   ],
   imports: [
     BrowserModule,

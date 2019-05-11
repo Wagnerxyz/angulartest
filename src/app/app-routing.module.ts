@@ -8,6 +8,7 @@ import { HelloParentComponent } from './hello/helloparent.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
 import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
+import { NgdocheckComponent } from './ngdocheck/ngdocheck.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     loadChildren: './canvaspdf/canvaspdf.module#CanvaspdfModule'
   },
 
+  { path: 'ngdocheck', component: NgdocheckComponent },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
