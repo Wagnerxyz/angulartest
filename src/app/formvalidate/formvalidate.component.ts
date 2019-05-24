@@ -17,7 +17,7 @@ export class FormvalidateComponent {
 
   submitted = false;
 
-  onSubmit(f: NgForm) { this.submitted = true; }
+  onSubmit() { this.submitted = true; }
 
   newHero() {
     this.model = new Hero(42, '', '');

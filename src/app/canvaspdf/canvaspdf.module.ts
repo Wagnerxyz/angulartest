@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 
 import { CanvaspdfRoutingModule } from './canvaspdf-routing.module';
@@ -10,6 +11,7 @@ import { CanvaspdfComponent } from './canvaspdf.component';
   imports: [
     CommonModule,
     MatCardModule,
+    FormsModule,
     CanvaspdfRoutingModule
   ]
 })

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { OnChangeComponent } from './changedetection/onChange';
 import { ChangedetectionComponent } from './changedetection/changedetection.component';
 import { NgrxComponent } from './ngrx/ngrx.component';
@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { HelloParentComponent } from './hello/helloparent.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
-import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 import { NgdocheckComponent } from './ngdocheck/ngdocheck.component';
+// import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
 const routes: Routes = [
@@ -24,6 +24,10 @@ const routes: Routes = [
   },
 
   { path: 'ngdocheck', component: NgdocheckComponent },
+  {
+    path: 'heroes',
+    loadChildren: './tour-of-heroes/tour-of-heroes.module#TourOfHeroesModule'
+  },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
@@ -40,7 +44,11 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    enableTracing: true, // <-- debugging purposes only
+    // preloadingStrategy: PreloadAllModules //普通module加载完后，预加载所有惰性加载的特性区。
+    //自定义加载策略https://angular.cn/guide/router#custom-preloading-strategy
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

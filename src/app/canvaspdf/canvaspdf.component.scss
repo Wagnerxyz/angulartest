@@ -1,3 +1,4 @@
+//for print DNI hidden Dom
 $Nopadding: 0px !important;
 
 #gridcontainer {
@@ -5,36 +6,46 @@ $Nopadding: 0px !important;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(9, [col-start] max-content [col-end]);
     // gap: 5px;
-    /* width: 200px;
-    height: 300px; */
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
+    width: 700px;
+    // border-bottom: 1px solid black;
+    // border-left: 1px solid black;
+    // border: 1px solid black;
     grid-template-areas:
         "header header "
         "client client"
-        "bitrunangle bitrunangle "
-        "geomagmodel geomagmodel"
+        "bitrun angle "
         "GeomagDate arrow"
         "northref arrow"
+        "geomagmodel geomagmodel"
         "location location"
         "tip tip"
         "customerrep customerrep";
 }
 
 #gridcontainer>div {
-    /* padding: 15px; */
-    /* text-align: center; */
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    border: 1px solid black;
 }
 
 #gridcontainer>* {
     padding: 10px;
 }
 
-#header {
+#dniHeader {
     grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: baseline;
+    justify-items: flex-end;
 
+    span:first-of-type {
+        font: 40px RobotoBold;
+        width: 100%;
+    }
+
+    img {
+        width: 160px;
+        height: 45px;
+    }
 }
 
 #headerrowtwo {
@@ -47,87 +58,150 @@ $Nopadding: 0px !important;
     }
 }
 
-#slbimg {
-    float: right;
- 
-}
 
-#client {
+#dniClient {
     grid-area: client;
-}
+    display: grid;
+    grid-template-columns: 80px auto;
 
-#bitrunangle {
-    padding: $Nopadding;
-    grid-area: bitrunangle;
-    display: flex;
+    :nth-child(odd) {
+        font-family: RobotoBold
+    }
 
-    >* {
-        &:first-child {
-            border-right: 1px solid black;
-        }
-
-        flex: 1 1 50%;
+    :nth-child(even) {
+        font-size: 0.8em;
     }
 }
 
-// #bitrunangle>* {
+#dniBitRun {
+    grid-area: bitrun;
 
-// }
+    span:first-of-type {
+        font-family: RobotoBold;
+    }
+}
 
-#GeomagDate {
+#dniAngle {
+    grid-area: angle;
+
+    span:first-of-type {
+        font-family: RobotoBold;
+    }
+}
+
+#dniGeomagDate {
     grid-area: GeomagDate;
     display: grid;
-    grid: repeat(5, 1fr)/repeat(2, max-content);
+    grid: repeat(7, 1fr)/repeat(2, max-content);
     justify-content: space-between;
+
+    :nth-child(odd) {
+        font-family: RobotoBold
+    }
+
+    :nth-child(even) {
+        justify-self: flex-end;
+    }
 }
 
-#northref {
+#dniNorthref {
     grid-area: northref;
+    display: grid;
+    grid: repeat(4, 1fr)/repeat(2, max-content);
+    justify-content: space-between;
+
+    :nth-child(even) {
+        justify-self: flex-end;
+    }
+
+    :nth-child(odd) {
+        font-family: RobotoBold
+    }
 }
 
-#arrow {
+#dniArrow {
     grid-area: arrow;
+
+    // border: 0 1 0 0 !important;
+    // display: block;
+    // margin: 0 auto 0 auto;
+    img {
+        height: 300px;
+    }
 }
 
-#geomagmodel {
+#dniGeomagmodel {
     grid-area: geomagmodel;
+
+    :first-child {
+        margin-right: 30px;
+        font-family: RobotoBold
+    }
 }
 
-#location {
+#dniLocation {
     grid-area: location;
+    display: grid;
+    gap: 15px;
+    grid: repeat(4, 1fr)/1.6fr 4fr 4fr;
+    justify-items: center;
 }
 
-#tip {
+#dniTip {
     grid-area: tip;
     padding: $Nopadding;
+    border: none !important;
+}
+
+#dniCustomerrep {
+    grid-area: customerrep;
+    display: grid;
+    grid: 2fr 1fr 2fr 1fr/ max-content 2.5fr max-content 2.5fr;
+    align-items: end;
+    gap: 10px;
+    font-family: RobotoBold;
+}
+
+hr {
+    width: 100%;
+    margin: 0px;
 }
 
 table {
     border-collapse: collapse;
-    width: 100%
+    width: 100%;
+    table-layout: fixed;
 }
 
 table,
 th,
 td {
     border: 1px solid black;
+    height: 28px;
+}
+
+tr,
+th {
+    text-align: center;
 }
 
 th:first-child {
     width: 8%;
 }
 
-#customerrep {
-    grid-area: customerrep;
+.bold {
+    font-family: RobotoBold;
 }
 
+.alignleft {
+    justify-self: flex-start;
+}
 
-#tipspan {
+.alignright {
+    justify-self: flex-end;
+}
+
+.signaturedate {
     display: flex;
-    align-items: center;
-    margin-right: 15px;
+    justify-content: space-between;
 }
-
-/* p{
-
-} */

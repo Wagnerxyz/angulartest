@@ -4,60 +4,81 @@
       <strong>Html To PDF Conversion - Angular 6</strong>
     </div>
     <div>
-      <input type="button" value="CPTURE" (click)="captureScreen()" />
+      <input type="button" value="CAPTURE" (click)="captureScreen()" />
     </div>
   </mat-card>
 </div>
 <div>
   <div id="gridcontainer">
-    <div id="header">
-      <img src="../../assets/SchlumbergerLogoH.png" id="slbimg">
-      <div id="headerrowtwo">
-        <h1>D&I Initializations</h1>
-        <p style="text-align: end;">{{now}}</p>
-      </div>
+    <div id="dniHeader">
+      <div></div>
+      <img src="../../assets/SchlumbergerLogoH.png">
+      <span>D&I Initializations</span>
+      <span>{{now}}</span>
     </div>
-    <div id="client">
-      <p>Client:    qweqeqeqeqwe</p>
-      <p>Job ID:  19OKC0898</p>
-      <p>Field: asdasdadasda</p>
-      <p>Well: zeus aaa</p>
-    </div>
-    <div id="bitrunangle">
-      <div>Bit Run:  6</div>
-      <div>Toolface Offset Angle: 30deg</div>
-    </div>
-    <div id="geomagmodel">
-      Geomag Model Used: AWQEDAS
-    </div>
-    <div id="GeomagDate">
-      <p>Geomag Date:</p>
-      <p>2019123123123</p>
-      <p>LMF Elev above MSL:</p>
-      <p>asdasdadasdasd</p>
-      <p>DF Elev above Permanent Datum:</p>
-      <p>sadfsdfsdfsfsdf</p>
-      <p>Latitude:</p>
-      <p>12313131</p>
-      <p>Longitude:</p>
-      <p>12313131</p>
-    </div>
-    <div id="northref">
-      <p>North Reference:</p>
-      <p>Grid Convergence [g]: (Manual)</p>
-      <p>Magnetic Declination [m]:</p>
-      <p>Total Correction [t] = [m] - [g]:</p>
-    </div>
-    <div id="arrow">
-      <img src="../../assets/angle.PNG" alt="">
+    <div id="dniClient">
+      <p>Client: </p>
+      <p>qweqeqeqeqwe</p>
+      <p>Job ID: </p>
+      <p>19OKC0898</p>
+      <p>Field: </p>
+      <p>asdasdadasda</p>
+      <p>Well:</p>
+      <p>zeus aaa</p>
     </div>
 
-    <div id="location">
-      <div>need inner table</div>
+    <div id="dniBitRun">Bit Run: 6</div>
+    <div id="dniAngle">Toolface Offset Angle: TELE675:0.00deg</div>
+
+    <div id="dniGeomagDate">
+      <p>Geomag Date:</p>
+      <p>{{nowDate}}</p>
+      <p>Permanent datum:</p>
+      <p>Ground level</p>
+      <p>Log measured from:</p>
+      <p>Drill floor</p>
+      <p>Elevation of drill floor:</p>
+      <p>{{wellInfo?.headElevation}}{{wellInfo?.headElevationUnit}}</p>
+      <p>Elevation of ground floor:</p>
+      <p>{{wellInfo?.groundElevation}}{{wellInfo?.groundElevationUnit}}</p>
+      <p>Latitude:</p>
+      <p>{{wellInfo?.latitude}}</p>
+      <p>Longitude:</p>
+      <p>{{wellInfo?.longitude}}</p>
     </div>
-    <div id="tip">
-      <!-- <span id="tipspan">TIP</span> -->
-      <table id="tipgrid">
+    <div id="dniNorthref">
+      <p>North Reference:</p>
+      <p>Grid North</p>
+      <p>Grid Convergence [g]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Manual)</p>
+      <p>1.0000(deg)</p>
+      <p>Magnetic Declination [m]:</p>
+      <p>-4.79839(deg)</p>
+      <p>Total Correction [t] = [m] - [g]:</p>
+      <p>-5.79839(deg)</p>
+    </div>
+    <div id="dniArrow">
+      <img src="../../assets/angle.PNG" alt="">
+    </div>
+    <div id="dniGeomagmodel">
+      <span>Geomag Model Used:</span>
+      <span>AWQEDAS</span>
+    </div>
+    <div id="dniLocation">
+      <div></div>
+      <span class="bold">Reference Value</span>
+      <span class="bold">Acceptance Criteria</span>
+      <span class="bold alignleft">Location B:</span>
+      <span>31924.99(nT)</span>
+      <span>300.00(nT)</span>
+      <span class="bold alignleft">Magnetic Dip:</span>
+      <span>-30.11(deg)</span>
+      <span>0.45(deg)</span>
+      <span class="bold alignleft">Location G:</span>
+      <span>997.31(mgn)</span>
+      <span>2.50(mgn)</span>
+    </div>
+    <div id="dniTip">
+      <table>
         <tr>
           <th rowspan="2">TIP</th>
           <th>MD(ft)</th>
@@ -78,21 +99,37 @@
           <td>1111</td>
         </tr>
 
-        <!-- <p>MD(ft)</p>
-        <p>INCL(deg)</p>
-        <p>AZIM(deg)</p>
-        <p>TVD(ft)</p>
-        <p>N/-S(ft)</p>
-        <p>E/-W(ft)</p>
-        <p>VSAZI(deg)</p> -->
-
       </table>
     </div>
-    <div id="customerrep">
-      inner grid
+    <div id="dniCustomerrep">
+      <span>Customer Rep</span>
+      <hr>
+      <span>Directional Driller</span>
+      <hr>
+      &nbsp;
+      <div class="signaturedate">
+        <span>Signature</span>
+        <span>Date</span>
+      </div>
+      &nbsp;
+      <div class="signaturedate">
+        <span>Signature</span>
+        <span>Date</span>
+      </div>
+      <span>MWD Engineer</span>
+      <hr>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div class="signaturedate">
+        <span>Signature</span>
+        <span>Date</span>
+      </div>
     </div>
-
-
   </div>
-
+  <input type="text" [(ngModel)]="canvaswidth" placeholder="canvaswidth">
+  <input type="text" [(ngModel)]="scale" placeholder="scale">
+  <input type="text" [(ngModel)]="width" placeholder="width">
+  <input type="text" [(ngModel)]="height" placeholder="height">
+  <input type="text" (ngModel)="fileName" placeholder="fileName">
 </div>
