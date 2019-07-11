@@ -3,9 +3,9 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
 import { TourOfHeroesModule } from './tour-of-heroes.module'
 
-// @Injectable({
-//   providedIn: TourOfHeroesModule
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [

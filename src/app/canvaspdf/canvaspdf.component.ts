@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas'
 
-
 @Component({
   selector: 'app-canvaspdf',
   templateUrl: './canvaspdf.component.html',
@@ -36,46 +35,52 @@ export class CanvaspdfComponent {
   public captureScreen() {
     window.URL.revokeObjectURL(this.lastBlobUrl);
 
-    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-
     var element = document.getElementById('gridcontainer');
+    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+    // let canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
+
+
     //渲染效果差
-    pdf.html(element, {
-      callback: function (doc) {
-        doc.save();
-      }
-    });
+    // pdf.html(element, {
+    //   callback: function (doc) {
+    //     var blobPDF = new Blob([doc.output('blob')], { type: 'application/pdf' });
+    //     var blobUrl = URL.createObjectURL(blobPDF); 
+    //     window.open(blobUrl);
+    //     doc.save();
+    //   }
+    // });
 
     //渲染效果好
-    // html2canvas(element, {
-    //   // scale: 3
-    //   // windowWidth: element.scrollWidth,
-    //   // windowHeight: element.scrollHeight
-    // }).then(canvas => {
-    //   // Few necessary setting options  
-    //   var imgWidth = 210;
-    //   var pageHeight = 297;
-    //   var imgHeight = canvas.height * imgWidth / canvas.width;
-    //   var heightLeft = imgHeight;
+    html2canvas(element, {
+      // scale: 2
+      // windowWidth: element.scrollWidth,
+      // windowHeight: element.scrollHeight
+    }).then(canvas => {
+      // Few necessary setting options  貌似是按比例裁剪，不加这个是缩放拉伸
+      // var imgWidth = 210;
+      // var pageHeight = 297;
+      // var imgHeight = canvas.height * imgWidth / canvas.width;
+      // var heightLeft = imgHeight;
 
-    //   // const imgProps= this.pdf.getImageProperties(imgData);
-    //   // const pdfWidth = this.pdf.internal.pageSize.getWidth();
-    //   // const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    //   var width = pdf.internal.pageSize.getWidth();
-    //   var height = pdf.internal.pageSize.getHeight();
-    //   // const contentDataURL = canvas.toDataURL('image/png');
-    //   canvas.toBlob(function (blob) {
-    //     window.open(URL.createObjectURL(blob));
-    //   });
-    //   pdf.addImage(canvas, 'PNG', 0, 0, width, height)
 
-    //   // var blobPDF = new Blob([this.pdf.output('blob')], { type: 'application/pdf' });
-    //   // var blobUrl = URL.createObjectURL(blobPDF);  //<--- THE ERROR APPEARS HERE
-    //   // window.open(blobUrl, "DescriptiveWindowName");  // will open a new tab
+      //manually input width,height for debug purpose
+      if (this.height && this.width) {
+        pdf.addImage(canvas, 'PNG', 0, 0, this.width, this.height);
+        this.fileName = `${this.width}__${this.height}`;
+      }
+      else {
+        pdf.addImage(canvas, 'PNG', 0, 0, 210, 297);
+      }
 
-    //   // URL.revokeObjectURL(blobUrl);
-    //   pdf.save(canvas.width + 'DNI.pdf');
-    // });
+      // canvas.toBlob(function (blob) {
+      //     window.open(URL.createObjectURL(blob));
+      // });
+      // pdf.save(this.fileName + 'DNI.pdf');
+      let blobPDF = new Blob([pdf.output('blob')], { type: 'application/pdf' });
+
+      let lastBlobUrl = URL.createObjectURL(blobPDF);
+      window.open(lastBlobUrl);
+    });
   }
   public ngOnDestroy(): void {
     window.URL.revokeObjectURL(this.lastBlobUrl);

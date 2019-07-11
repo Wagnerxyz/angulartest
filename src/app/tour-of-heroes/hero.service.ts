@@ -5,22 +5,21 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { TourOfHeroesModule } from './tour-of-heroes.module'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-// @Injectable({
-//   providedIn: TourOfHeroesModule
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
-    // this.messageService.add('HeroService: fetched heroes');
+     this.messageService.add('HeroService: fetched heroes');
     // return of(HEROES);
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
       tap(_ => this.log('fetched heroes')),

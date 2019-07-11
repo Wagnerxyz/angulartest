@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TourOfHeroesModule } from './tour-of-heroes.module'
 
-// @Injectable({
-//   providedIn: TourOfHeroesModule
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class MessageService {
   messages: string[] = [];
 

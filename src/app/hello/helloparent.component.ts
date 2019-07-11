@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from '../services/dialog.service';
+import { Observable } from 'rxjs';
 
 @Component({
   template: `
@@ -11,6 +13,19 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class HelloParentComponent {
+  constructor(public dialogService: DialogService){
+
+  }
+  //If it’s a boolean, then the navigation is going to be executed or aborted, straight away. 
+  //If it’s an Observable then nothing is going to happen until the observable emits a value.
+  // Then the navigation will either execute or abort. 
+   canDeactivate(): Observable<boolean> | boolean {
+
+    // if (!this.isUpdating && this.personForm.dirty) {
+        return this.dialogService.confirm('Discard changes for Person?');
+    // }
+    return true;
+}	
   config = {
     position: 'top'
   };

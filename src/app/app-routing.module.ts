@@ -8,6 +8,7 @@ import { HelloParentComponent } from './hello/helloparent.component';
 import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
 import { FormvalidateComponent } from './formvalidate/formvalidate.component';
 import { NgdocheckComponent } from './ngdocheck/ngdocheck.component';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 // import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'changedetect', component: ChangedetectionComponent },
   { path: 'onchange', component: OnChangeComponent },
   { path: 'ngrx', component: NgrxComponent },
-  { path: 'hello', component: HelloParentComponent },
+  { path: 'hello', component: HelloParentComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'sharereplay', component: SharereplaytestComponent },
   { path: 'formvalidate', component: FormvalidateComponent },
   {
