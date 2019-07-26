@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from './counter.actions';
+import { Increment, Decrement, Reset, Login } from './counter.actions';
 
 @Component({
   selector: 'app-ngrx',
@@ -26,5 +26,9 @@ export class NgrxComponent {
 
   reset() {
     this.store.dispatch(new Reset());
+  }
+
+  click(username: string, password: string) {
+    this.store.dispatch(new Login({ username: username, password: password }));
   }
 }

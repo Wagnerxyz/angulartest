@@ -17,3 +17,9 @@ export class Decrement implements Action {
 export class Reset implements Action {
   readonly type = ActionTypes.Reset;
 }
+
+export class Login implements Action {
+  readonly type = '[Login Page] Login';
+
+  constructor(public payload: { username: string; password: string }) {}
+}
