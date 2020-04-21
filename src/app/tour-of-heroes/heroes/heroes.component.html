@@ -1,5 +1,5 @@
-<a routerLink="../dashboard">Dashboard</a>
 <h2>My Heroes</h2>
+
 <div>
   <label>Hero name:
     <input #heroName />
@@ -9,13 +9,15 @@
     add
   </button>
 </div>
+
 <ul class="heroes">
-  <!-- <li [class.selected]="hero === selectedHero" *ngFor="let hero of heroes" (click)="onSelect(hero)"> -->
   <li *ngFor="let hero of heroes">
-    <a routerLink="detail/{{hero.id}}">
+    <a routerLink="../detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
+    <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
   </li>
 </ul>
-<button class="clear1" (click)="messageService.clear()">clear1</button>
+
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->

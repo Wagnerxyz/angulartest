@@ -1,0 +1,25 @@
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<p>use [(size)]</p>
+<hr>
+<app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<p>use seperate [size] and (sizeChange) 和上面的相等，语法糖简化而已</p>
+<hr>
+<blockquote>以下两个是错误用法</blockquote>
+<app-sizer (size)="fontSizePx=$event"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Texts</div>
+<p>use (size) 父组件没给子组件传值啊！ 子组件click报错 NaN</p>
+
+<hr>
+<app-sizer [size]="fontSizePx"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<p>use [size] 里面变化了，emit了，外面不监听事件，fontSizepx传给子组件，父组件的fontSizePx再就没变！</p>
+
+
+<hr>
+<h2>测试2，与上面的没关系</h2>
+<!-- <input [value]="username" (input)="username = $event.target.value"> -->
+<input [ngModel]="username" (ngModelChange)="username = $event">OK！
+<input (ngModelChange)="username = $event">没有绑定username
+<input [ngModel]="username">只绑定username，单向。username再就没变过

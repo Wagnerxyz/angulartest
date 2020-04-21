@@ -1,35 +1,40 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
+  <!-- <h1>
     Welcome to {{ title }}!
-  </h1>
-  <img width="100" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  </h1> -->
 </div>
-<nav>
-  <ul>
-    <li><a routerLink="/changedetect" routerLinkActive="active">changedetect</a></li>
-    <li><a routerLink="/onchange" routerLinkActive="active">onchange</a>
-    <li>
-    <li><a routerLink="/ngrx" routerLinkActive="active">ngrx</a>
-    <li>
-    <li><a routerLink="/hello" routerLinkActive="active">hello</a>
-    <li>
-    <li><a routerLink="/sharereplay" routerLinkActive="active">sharereplay</a>
-    <li>
-    <li><a routerLink="/formvalidate" routerLinkActive="active">formvalidate</a>
-    <li>
-    <li><a routerLink="/pdf" routerLinkActive="active">grid DNIReport</a>
-    <li><a routerLink="/heroes" routerLinkActive="active">angular-tour-of-heroes</a>
-    <li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img width="30" alt="Angular Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    Welcome to {{ title }}!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home </a>
+      <a class="nav-item nav-link" routerLink="/changedetect" routerLinkActive="active">changedetect</a>
+      <a class="nav-item nav-link" routerLink="/OnpushHierachy" routerLinkActive="active">OnpushHierachy</a>
+      <a class="nav-item nav-link" routerLink="/ngmodel" routerLinkActive="active">([ngModel]))</a>
+      <a class="nav-item nav-link" routerLink="/onchange" routerLinkActive="active">onchange</a>
+      <a class="nav-item nav-link" routerLink="/ngrx" routerLinkActive="active">ngrx</a>
+      <a class="nav-item nav-link" routerLink="/hello" routerLinkActive="active">hello</a>
+      <a class="nav-item nav-link" routerLink="/sharereplay" routerLinkActive="active">sharereplay</a>
+      <a class="nav-item nav-link" routerLink="/TemplateDrivenForm" routerLinkActive="active">TemplateDrivenForm</a>
+      <a class="nav-item nav-link" routerLink="/ReactiveForm" routerLinkActive="active">ReactiveForm</a>
+      <a class="nav-item nav-link" routerLink="/pdf" routerLinkActive="active">grid DNIReport</a>
+      <a class="nav-item nav-link" routerLink="/toh" routerLinkActive="active" title="Angular官网教程">angular-tour-of-heroes</a>
+    </div>
+  </div>
 </nav>
 
-<!-- <input [value]="username" (input)="username = $event.target.value"> -->
-<input [ngModel]="username" (ngModelChange)="username = $event">
+
 <hr>
-<div class="container">
+<div class="container-fluid">
   <!-- <div class="border border-primary"> -->
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   <!-- </div> -->
-</div>
+<!-- </div> -->

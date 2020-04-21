@@ -1,33 +1,36 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { OnChangeComponent } from './changedetection/onChange';
-import { ChangedetectionComponent } from './changedetection/changedetection.component';
+import { ChangeDetectionParentComponent } from './changedetection/changedetection-parent.component';
+import { TwoWayBindingComponent, TemplateFormValidateComponent, ReactiveFormComponent } from './syntax';
 import { NgrxComponent } from './ngrx/ngrx.component';
-import { AppComponent } from './app.component';
 import { HelloParentComponent } from './hello/helloparent.component';
-import { SharereplaytestComponent } from './sharereplaytest/sharereplaytest.component';
-import { FormvalidateComponent } from './formvalidate/formvalidate.component';
-import { NgdocheckComponent } from './ngdocheck/ngdocheck.component';
-import { CanDeactivateGuard } from './can-deactivate-guard.service';
+import { OnpushHierachyComponent } from './changedetection/onpush-hierachy.component';
+import { CanDeactivateGuard } from './routeguard';
+import { HomeComponent, ShareReplayTestComponent } from './syntax';
 // import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
 const routes: Routes = [
-  { path: 'changedetect', component: ChangedetectionComponent },
+  { path: 'changedetect', component: ChangeDetectionParentComponent },
+  { path: 'OnpushHierachy', component: OnpushHierachyComponent },
+  { path: 'ngmodel', component: TwoWayBindingComponent },
   { path: 'onchange', component: OnChangeComponent },
   { path: 'ngrx', component: NgrxComponent },
   { path: 'hello', component: HelloParentComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: 'sharereplay', component: SharereplaytestComponent },
-  { path: 'formvalidate', component: FormvalidateComponent },
+  { path: 'sharereplay', component: ShareReplayTestComponent },
+  { path: 'TemplateDrivenForm', component: TemplateFormValidateComponent },
+  { path: 'ReactiveForm', component: ReactiveFormComponent },
+  { path: 'test', component: HomeComponent },
   {
     path: 'pdf',
-    loadChildren: './canvaspdf/canvaspdf.module#CanvaspdfModule'
+    loadChildren: () => import('./canvaspdf/canvaspdf.module').then(m => m.CanvaspdfModule)
   },
 
-  { path: 'ngdocheck', component: NgdocheckComponent },
+  // { path: 'ngdocheck', component: NgdocheckComponent },
   {
-    path: 'heroes',
-    loadChildren: './tour-of-heroes/tour-of-heroes.module#TourOfHeroesModule'
+    path: 'toh',
+    loadChildren: () => import('./tour-of-heroes/tour-of-heroes.module').then(m => m.TourOfHeroesModule)
   },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },

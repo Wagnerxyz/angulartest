@@ -6,27 +6,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
-
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TourOfHeroesRoutingModule } from './tour-of-heroes-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppComponent } from './app.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 @NgModule({
   declarations: [
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent],
+    DashboardComponent,
+    HeroSearchComponent,
+    AppComponent],
   imports: [
     CommonModule,
     FormsModule,
     TourOfHeroesRoutingModule,
     //这两个不知道咋回事，放子模块不行，在appmodule注册才行 https://github.com/angular/in-memory-web-api/issues/210
-    // HttpClientModule
-    // HttpClientInMemoryWebApiModule.forFeature(
-    //   InMemoryDataService, { dataEncapsulation: false })
+    // HttpClientModule,
+    HttpClientInMemoryWebApiModule.forFeature(
+      InMemoryDataService, { dataEncapsulation: false })
   ],
   providers: [
     // MessageService,

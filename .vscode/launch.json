@@ -7,7 +7,7 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Debug配合ng serve",
             "url": "http://localhost:4200",
             //因为配合ng serve起，webroot就是根目录了~
             "webRoot": "${workspaceFolder}"

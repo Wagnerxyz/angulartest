@@ -37,7 +37,7 @@ export class OnChangeComponent {
         console.log('resize event', e);
         this.firstName += '*';
 
-        this.model.user='aaaa'
+        this.model.user = 'aaaa'
       });
   }
   // ngDoCheck() { console.log('change detection'); }

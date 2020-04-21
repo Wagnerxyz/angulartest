@@ -29,7 +29,7 @@ import { refCount, publishReplay, share, shareReplay, map } from 'rxjs/operators
     <p>
       Here is why: the share() will publish the first value on the first subscription.
       The first async pipe wil subscribe and get the value 'Pluto'. The second async pipe however will subscribe after
-      that value has already been emitted and therefore miss that value.
+      that value has <b>already been emitted</b> and therefore miss that value.
     </p>
     
     <h2>Solution: shareReplay()</h2>
@@ -48,28 +48,41 @@ import { refCount, publishReplay, share, shareReplay, map } from 'rxjs/operators
       Here is why:shareReplay() will do a publishReplay().refcount() behind the scenes which keeps track of the last
       element in the stream. That way all async pipes have access to it.
     </p>
+    <button (click)='sharelost()'>Share有可能漏消息，ShareReplay不会</button>
   `
 })
-export class SharereplaytestComponent {
+export class ShareReplayTestComponent {
+
   cat$ = new BehaviorSubject({ name: 'Felix' });
   catName$ = this.cat$.pipe(map(item => item.name))
+
   dog$ = new BehaviorSubject({ name: 'Pluto' });
   dogName$ = this.dog$.pipe(map(item => item.name), share());
+
   horse$ = new BehaviorSubject({ name: 'Pegasus' });
   horseName$ = this.horse$.pipe(map(item => item.name), shareReplay(1));
-  sleep(ms) {
+
+  //https://www.sitepoint.com/delay-sleep-pause-wait/ 
+  //js sleep helper method
+  sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  demo() {
-
+  async sharelost(ms: any) {
+    let a$ = interval(1000).pipe(share())
+    a$.subscribe({ next: (v) => console.log('第一个订阅', v) });
+    //这样很危险，如果订阅时间有差异那后面的订阅就拿不到前面的emit，所以要用shareReplay
+    console.log('Taking a break...');
+    await this.sleep(2000);
+    console.log('2 seconds later');
+    a$.subscribe({ next: (v) => console.log('第二个订阅', v) });
   }
 
 
   async  ngOnInit() {
 
-//#region publishReplay
-    var a$ = of(1, 2, 3, 4, 5).pipe(
+    //#region publishReplay
+    let a$ = of(1, 2, 3, 4, 5).pipe(
       publishReplay(3)
       , refCount())
     a$.subscribe({ next: (v) => console.log('observerA: ' + v) });
@@ -77,19 +90,14 @@ export class SharereplaytestComponent {
     await this.sleep(3000);
     console.log('3 seconds later');
 
+    //都打印3，4，5，因为publishReplay(3) 存三个结果
     a$.subscribe({ next: (v) => console.log('observerB: ' + v) });
     a$.subscribe({ next: (v) => console.log('observerC: ' + v) });
 
 
 
-//#region   share
-    var a$ = interval(1000).pipe(share())
-    a$.subscribe({ next: (v) => console.log(v) });
-  //这样很危险，如果订阅时间有差异那后面的订阅就拿不到前面的emit，所以要用shareReplay
-    console.log('Taking a break...');
-    //await this.sleep(3000);
-    console.log('3 seconds later');
-    a$.subscribe({ next: (v) => console.log(v) });
+    //#region   share
+
   }
 
 }

@@ -1,0 +1,53 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Hero Form</h1>
+    <!-- heroForm 变量是一个到 NgForm 指令的引用，它代表该表单的整体。 -->
+    <form #heroForm="ngForm" (ngSubmit)="onSubmit(heroForm)">
+      {{diagnostic}}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" #spy class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+        <br>TODO: 诊断用: {{spy.className}}
+        {{name.invalid}}
+        {{name.valid}}
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
+      </div>
+
+      <div class="form-group">
+        <label for="power">Hero Power</label>
+        <select class="form-control" id="power" required [(ngModel)]="model.power" name="power">
+          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit [disabled]="!heroForm.form.valid"</button>
+      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero (click)="newHero(); heroForm.reset()"</button>
+      <blockquote> 表单记得你在点击 New Hero 前输入的名字。 更换了英雄对象并不会重置控件的“全新”状态。 你必须清除所有标记，在调用 newHero() 方法后调用表单的 reset() 方法即可。</blockquote>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <p>提交后显示通过[hidden]="!submitted"</p>
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Alter Ego</div>
+      <div class="col-xs-9">{{ model.alterEgo }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Power</div>
+      <div class="col-xs-9">{{ model.power }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit(其实(click)="submitted=false" 整个div又隐藏了)</button>
+  </div>
+</div>
