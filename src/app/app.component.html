@@ -15,7 +15,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home </a>
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">Home </a>
       <a class="nav-item nav-link" routerLink="/changedetect" routerLinkActive="active">changedetect</a>
       <a class="nav-item nav-link" routerLink="/OnpushHierachy" routerLinkActive="active">OnpushHierachy</a>
       <a class="nav-item nav-link" routerLink="/ngmodel" routerLinkActive="active">([ngModel]))</a>
@@ -37,4 +38,9 @@
   <!-- <div class="border border-primary"> -->
   <router-outlet></router-outlet>
   <!-- </div> -->
-<!-- </div> -->
+</div>
+<hr>
+以下是appcomponent的临时组件区通过ng-template, ComponentFactoryResolver注入创建
+<ng-template #container>
+
+</ng-template>

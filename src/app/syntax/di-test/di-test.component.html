@@ -1,0 +1,25 @@
+<p>di-test works!</p>
+<p>string token,classtoken导致生成两个实例</p>
+
+<div>
+    <button (click)='classToken()'>class Token</button>
+    <span>结果useclass：{{classValue}}</span>
+</div>
+<div>
+    <button (click)='existingToken()'>existing Token</button>
+    <span>结果(复用实例)：{{existingTokenValue}}</span>
+</div>
+<div>
+    <button (click)='usevalue()'>使用指定的值，且通过string token DI注入</button>
+    <span>结果usevalue：{{stringtokenusevalue}}</span>
+</div>
+
+<div>
+    <p (click)='usemulti()'>usemulti 一个token允许注入多个,遍历结果，即便多个module注入的</p>
+    <!-- <span>结果：{{value}}</span> -->
+    <ul>
+        <li *ngFor="let item of items">
+          <a [routerLink]="item.route">{{ item.label }}</a>
+        </li>
+      </ul>`
+</div>

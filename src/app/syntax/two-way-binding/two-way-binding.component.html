@@ -4,7 +4,7 @@
 <hr>
 <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
 <div [style.font-size.px]="fontSizePx">Resizable Text</div>
-<p>use seperate [size] and (sizeChange) 和上面的相等，语法糖简化而已</p>
+<p>use seperate [size] and (sizeChange) 和上面的[(size)]相等，语法糖简化而已</p>
 <hr>
 <blockquote>以下两个是错误用法</blockquote>
 <app-sizer (size)="fontSizePx=$event"></app-sizer>

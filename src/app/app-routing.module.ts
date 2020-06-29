@@ -8,6 +8,7 @@ import { HelloParentComponent } from './hello/helloparent.component';
 import { OnpushHierachyComponent } from './changedetection/onpush-hierachy.component';
 import { CanDeactivateGuard } from './routeguard';
 import { HomeComponent, ShareReplayTestComponent } from './syntax';
+import { DiTestComponent } from './syntax/di-test/di-test.component';
 // import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'TemplateDrivenForm', component: TemplateFormValidateComponent },
   { path: 'ReactiveForm', component: ReactiveFormComponent },
   { path: 'test', component: HomeComponent },
+  { path: 'ditest', component: DiTestComponent },
   {
     path: 'pdf',
     loadChildren: () => import('./canvaspdf/canvaspdf.module').then(m => m.CanvaspdfModule)

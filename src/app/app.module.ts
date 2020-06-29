@@ -24,7 +24,18 @@ import { NgrxComponent } from './ngrx/ngrx.component';
 import { StoreModule } from '@ngrx/store';
 // import { reducers, metaReducers } from './reducers';
 import { counterReducer } from './reducers/counter.reducer';
-import { TwoWayBindingComponent, SizerComponent, TemplateFormValidateComponent, ReactiveFormComponent, ShareReplayTestComponent, HomeComponent, NewsletterComponent } from './syntax';
+import { TwoWayBindingComponent, SizerComponent, TemplateFormValidateComponent, ReactiveFormComponent, ShareReplayTestComponent, HomeComponent, NewsletterComponent, moduleTwoMenu, SETTINGS_MENU } from './syntax';
+import { DiTestComponent } from './syntax/di-test/di-test.component';
+import { SyntaxModule } from './syntax/syntax.module';
+import { FetchDataComponent } from './fetch-data/fetch-data.component'
+
+function getBaseUrl() {
+  return document.getElementsByTagName('base')[0].href;
+}
+
+const providers = [
+  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
+];
 
 @NgModule({
   declarations: [
@@ -44,7 +55,9 @@ import { TwoWayBindingComponent, SizerComponent, TemplateFormValidateComponent, 
     SizerComponent,
     ReactiveFormComponent,
     HomeComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    DiTestComponent,
+    FetchDataComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +69,14 @@ import { TwoWayBindingComponent, SizerComponent, TemplateFormValidateComponent, 
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false, delay: 0 }),
     StoreModule.forRoot({ count: counterReducer }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SyntaxModule
   ],
   providers: [
-    DialogService],
+    { provide: SETTINGS_MENU, useValue: moduleTwoMenu, multi: true },
+    { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
+    DialogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

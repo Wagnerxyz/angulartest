@@ -68,7 +68,7 @@ export class ShareReplayTestComponent {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async sharelost(ms: any) {
+  async sharelost(ms?: any) {
     let a$ = interval(1000).pipe(share())
     a$.subscribe({ next: (v) => console.log('第一个订阅', v) });
     //这样很危险，如果订阅时间有差异那后面的订阅就拿不到前面的emit，所以要用shareReplay
