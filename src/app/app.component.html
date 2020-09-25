@@ -9,26 +9,45 @@
     <img width="30" alt="Angular Logo"
       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
     Welcome to {{ title }}!</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNavAltMarkup"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-        true}">Home </a>
-      <a class="nav-item nav-link" routerLink="/changedetect" routerLinkActive="active">changedetect</a>
-      <a class="nav-item nav-link" routerLink="/OnpushHierachy" routerLinkActive="active">OnpushHierachy</a>
-      <a class="nav-item nav-link" routerLink="/ngmodel" routerLinkActive="active">([ngModel]))</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav flex-grow-1">
+      <li class="nav-item">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Change Detect</a>
+        <div class="dropdown-menu">
+          <a class="nav-item nav-link" routerLink="/RefValueObj" routerLinkActive="active">RefValueObj</a>
+          <a class="nav-item nav-link" routerLink="/changedetect" routerLinkActive="active">Change Detect综合</a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-item nav-link" routerLink="/OnpushHierachy" routerLinkActive="active">Onpush Hierachy</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Form</a>
+        <div class="dropdown-menu">
+          <a class="nav-item nav-link" routerLink="/TemplateDrivenForm" routerLinkActive="active">TemplateDrivenForm</a>
+          <a class="nav-item nav-link" routerLink="/ReactiveForm" routerLinkActive="active">ReactiveForm</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">RXJS</a>
+        <div class="dropdown-menu">
+          <a class="nav-item nav-link" routerLink="/ngrx" routerLinkActive="active">ngrx</a>
+          <a class="nav-item nav-link" routerLink="/sharereplay" routerLinkActive="active">share replay</a>
+        </div>
+      </li>
+      <a class="nav-item nav-link" routerLink="/twowaybinding" routerLinkActive="active">([ngModel]))twowaybinding</a>
       <a class="nav-item nav-link" routerLink="/onchange" routerLinkActive="active">onchange</a>
-      <a class="nav-item nav-link" routerLink="/ngrx" routerLinkActive="active">ngrx</a>
-      <a class="nav-item nav-link" routerLink="/hello" routerLinkActive="active">hello</a>
-      <a class="nav-item nav-link" routerLink="/sharereplay" routerLinkActive="active">sharereplay</a>
-      <a class="nav-item nav-link" routerLink="/TemplateDrivenForm" routerLinkActive="active">TemplateDrivenForm</a>
-      <a class="nav-item nav-link" routerLink="/ReactiveForm" routerLinkActive="active">ReactiveForm</a>
-      <a class="nav-item nav-link" routerLink="/pdf" routerLinkActive="active">grid DNIReport</a>
+
+      <a class="nav-item nav-link" routerLink="/emitter" routerLinkActive="active">EventEmitter</a>
+      <a class="nav-item nav-link" routerLink="/canvaspdf" routerLinkActive="active">grid DNIReport</a>
       <a class="nav-item nav-link" routerLink="/toh" routerLinkActive="active" title="Angular官网教程">angular-tour-of-heroes</a>
-    </div>
+    </ul>
   </div>
 </nav>
 
@@ -40,7 +59,8 @@
   <!-- </div> -->
 </div>
 <hr>
-以下是appcomponent的临时组件区通过ng-template, ComponentFactoryResolver注入创建
+以下是appcomponent的临时组件区通过ng-template, ComponentFactoryResolver注入创建。
+不要在意这里内容，只是传了个组件类型进来
 <ng-template #container>
 
 </ng-template>

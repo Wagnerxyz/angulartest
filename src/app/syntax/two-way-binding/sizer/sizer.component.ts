@@ -7,7 +7,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SizerComponent {
 
-
   @Input()  size: number | string;
   @Output() sizeChange = new EventEmitter<number>();
 

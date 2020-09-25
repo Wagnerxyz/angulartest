@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
     <button (click)="sendParent()">点我传值给父组件</button>
- </p>
+ </p> -->
  <p>
-     <button (click)="getDataFromChild(userInfo)">点父组件传过来的方法传值给父组件</button>
+     <button (click)="getDataFromChild(this.userInfo)">点 通过调用父组件@Input传过来的方法传值给父组件</button>
  </p>

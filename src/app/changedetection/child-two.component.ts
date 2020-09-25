@@ -16,8 +16,8 @@ import { Component, Input, ChangeDetectionStrategy, SimpleChanges } from '@angul
     {{ user.location }} <br />
     {{ user.email }} <br />
     
-    <button (click)="update()">Internal update</button>
-    <p>解释: {{state}}</p>
+    <button (click)="update()">子组件点击事件update()  this.state</button>
+    <p>解释: {{user.state}}</p>
     </div>
   `
 })
@@ -28,14 +28,14 @@ export class UserTwoComponent {
 
   //Dom Click事件触发change detection
   update() {
-    this.state = '本身Default检测，并不只检查@input引用，所以能更新。';
-   // this.user.name = 'user-two update name ';
+    this.user.state = '本身Default检测，并不只检查@input引用，所以能更新。';
+    // this.user.name = 'user-two update name ';
   }
 
   ngDoCheck() {
     console.log('user two ngDoCheck');
   }
-
+  //ngOnChanges仅当有@input binding才可能被调用，@Input绑定的直接引用变化，而不是子属性变化，才会被调用。
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
       let chng = changes[propName];

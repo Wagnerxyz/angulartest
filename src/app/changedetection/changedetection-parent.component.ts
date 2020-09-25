@@ -1,15 +1,23 @@
 //our root app component
 import { Component, ChangeDetectionStrategy, SimpleChanges } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
+
 @Component({
   selector: 'app-changedetection',
   changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <div>
     <p>演示 OnPush ,@Input不改变引用时，不触发检测，但可通过其组件的DOM EVENT触发检测 </p>
+    <p>都引用一个user对象通过@input传 </p>
+    <p> 点父组件按钮不会触发子组件DOM Event，子组件如果onpush需要@Input引用改变才行(还有其他几种，省略。。。) </p>
+   
       <button (click)="addProp()">Add property(不改变引用)</button>
       <button (click)="changeName()">Change name property(不改变引用)</button>
-      <button (click)="changeUser()">Change user object(改变引用)</button>
+      <button (click)="changeUser()">Change user object(改变引用)</button><br>
+      {{ user.name }}<br />
+      {{ user.age }} years old<br />
+      {{ user.location }} <br />
+      {{ user.email }} <br />
+      <p>解释: {{user.state}}</p>
       <hr>
       
       <p>两个组件引用同样的@Input</p>
@@ -23,7 +31,7 @@ import { BrowserModule } from '@angular/platform-browser'
 })
 export class ChangeDetectionParentComponent {
   user: any = {
-    name: '父节点传入@Input的默认值',
+    name: 'AAA',
     age: 31,
     location: 'New York'
   };
@@ -45,14 +53,4 @@ export class ChangeDetectionParentComponent {
       location: 'Houston'
     };
   }
-
-  ngOnChanges(changes: SimpleChanges) {
-    for (let propName in changes) {
-      let chng = changes[propName];
-      let cur = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-      console.log(`${this.constructor.name}:  ${propName}: currentValue = ${cur}, previousValue = ${prev}`);
-    }
-  }
-
 }

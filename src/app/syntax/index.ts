@@ -5,5 +5,5 @@ export * from './reactiveform/reactive-form.component';
 export * from './sharereplaytest.component';
 export * from './di-test/di-test.component';
 export * from './di-test/ditestconst';
-export * from './01';
+export * from './customEvent.component';
 

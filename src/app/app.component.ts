@@ -14,8 +14,15 @@ export class AppComponent {
   constructor(private resolver: ComponentFactoryResolver) { }
   ngOnInit() {
     this.entry.clear();
+    this.loadComponent();
+    // componentRef.instance.name = this.name;
+  }
+
+  /**
+   * 加载组件
+   */
+  private loadComponent() {
     const factory = this.resolver.resolveComponentFactory(ParentComponentComponent);
     const componentRef = this.entry.createComponent(factory);
-    // componentRef.instance.name = this.name;
   }
 }

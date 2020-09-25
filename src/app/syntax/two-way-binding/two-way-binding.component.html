@@ -1,3 +1,4 @@
+<h3>two-way-binding各种语法糖测试，eventEmitter 基于官网示例</h3>
 <app-sizer [(size)]="fontSizePx"></app-sizer>
 <div [style.font-size.px]="fontSizePx">Resizable Text</div>
 <p>use [(size)]</p>
@@ -6,7 +7,7 @@
 <div [style.font-size.px]="fontSizePx">Resizable Text</div>
 <p>use seperate [size] and (sizeChange) 和上面的[(size)]相等，语法糖简化而已</p>
 <hr>
-<blockquote>以下两个是错误用法</blockquote>
+<blockquote><b>以下两个是错误用法</b></blockquote>
 <app-sizer (size)="fontSizePx=$event"></app-sizer>
 <div [style.font-size.px]="fontSizePx">Resizable Texts</div>
 <p>use (size) 父组件没给子组件传值啊！ 子组件click报错 NaN</p>
@@ -18,8 +19,9 @@
 
 
 <hr>
-<h2>测试2，与上面的没关系</h2>
-<!-- <input [value]="username" (input)="username = $event.target.value"> -->
+<h2>测试2,babana语法，展开形式，与上面的没关系</h2>
+<input [value]="username" (input)="username = $event.target.value">OK！
 <input [ngModel]="username" (ngModelChange)="username = $event">OK！
+<input [(ngModel)]="username">OK！
 <input (ngModelChange)="username = $event">没有绑定username
 <input [ngModel]="username">只绑定username，单向。username再就没变过

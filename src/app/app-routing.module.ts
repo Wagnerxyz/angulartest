@@ -2,33 +2,24 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OnChangeComponent } from './changedetection/onChange';
 import { ChangeDetectionParentComponent } from './changedetection/changedetection-parent.component';
-import { TwoWayBindingComponent, TemplateFormValidateComponent, ReactiveFormComponent } from './syntax';
 import { NgrxComponent } from './ngrx/ngrx.component';
-import { HelloParentComponent } from './hello/helloparent.component';
 import { OnpushHierachyComponent } from './changedetection/onpush-hierachy.component';
 import { CanDeactivateGuard } from './routeguard';
-import { HomeComponent, ShareReplayTestComponent } from './syntax';
-import { DiTestComponent } from './syntax/di-test/di-test.component';
+import { RefValueObjParentComponent } from './changedetection/RefValueObj/RefValueObj-parent.component';
 // import { CanvaspdfComponent } from './canvaspdf/canvaspdf.component';
 
 
 const routes: Routes = [
   { path: 'changedetect', component: ChangeDetectionParentComponent },
   { path: 'OnpushHierachy', component: OnpushHierachyComponent },
-  { path: 'ngmodel', component: TwoWayBindingComponent },
   { path: 'onchange', component: OnChangeComponent },
   { path: 'ngrx', component: NgrxComponent },
-  { path: 'hello', component: HelloParentComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: 'sharereplay', component: ShareReplayTestComponent },
-  { path: 'TemplateDrivenForm', component: TemplateFormValidateComponent },
-  { path: 'ReactiveForm', component: ReactiveFormComponent },
-  { path: 'test', component: HomeComponent },
-  { path: 'ditest', component: DiTestComponent },
+  { path: 'RefValueObj', component: RefValueObjParentComponent, canDeactivate: [CanDeactivateGuard] },
+
   {
-    path: 'pdf',
+    path: 'canvaspdf',
     loadChildren: () => import('./canvaspdf/canvaspdf.module').then(m => m.CanvaspdfModule)
   },
-
   // { path: 'ngdocheck', component: NgdocheckComponent },
   {
     path: 'toh',
@@ -53,7 +44,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     enableTracing: true, // <-- debugging purposes only
     // preloadingStrategy: PreloadAllModules //普通module加载完后，预加载所有惰性加载的特性区。
-    //自定义加载策略https://angular.cn/guide/router#custom-preloading-strategy
+    //自定义加载策略https://angular.cn/guide/router#custom-preloading-strategy 实现PreloadingStrategy类preload方法，给路由添加属性比如 data:true,代码里自己判断加载
   })],
   exports: [RouterModule]
 })

@@ -5,36 +5,34 @@ import { NgForm } from '@angular/forms';
 @Component({
     selector: 'home',
     template: `
-    <newsletter [user]="user" (subscribe)="subscribe($event)"></newsletter>
+    <newsletter [user]="this.user" (subscribe)="subscribe($event)"></newsletter>
     <button (click)="changeUserName()">Change User Name</button>
+    <p>{{fromchild}}</p>
 `})
-export class HomeComponent {
+export class CustomEventComponent {
 
     user: User = {
         firstName: 'Alice',
         lastName: 'Smith'
     };
-
+    fromchild: string;
     constructor() {
-
     }
 
     subscribe(email: string) {
-        // this.newsletterService.subscribe(email);
+        this.fromchild = email;
     }
 
     changeUserName() {
         this.user.firstName = 'Bob';
     }
-
 }
 
 @Component({
     selector: 'newsletter',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-<fieldset class="newsletter">
-    
+<fieldset class="newsletter">    
     <legend>Newsletter</legend>
     
     <h5>Hello {{user?.firstName}},
@@ -47,8 +45,7 @@ export class HomeComponent {
                 (click)="subscribeToNewsletter(email.value)">
     </form>
           
-</fieldset>
-      
+</fieldset>      
 `})
 export class NewsletterComponent {
 
@@ -59,9 +56,8 @@ export class NewsletterComponent {
     subscribe = new EventEmitter();
 
     subscribeToNewsletter(email: string) {
-        // this.subscribe.emit(email);
+        this.subscribe.emit(email); console.log('www');
     }
-
 }
 
 export interface User {

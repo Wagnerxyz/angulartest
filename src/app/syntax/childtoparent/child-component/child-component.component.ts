@@ -12,8 +12,4 @@ export class ChildComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-
-  sendParent() {
-    this.getDataFromChild(this.userInfo)
-  }
 }
